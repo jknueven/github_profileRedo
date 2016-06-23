@@ -1,9 +1,10 @@
 .Header {
   height: 48px;
   background-color: #F5F5F5;
-  border-bottom: 1px solid gainsboro; }
+  border-bottom: 1px solid gainsboro;
+  width: 100%; }
 
-.container-fluid {
+.contentMain {
   margin-left: 95px;
   width: 1000px;
   padding-top: 5px;
@@ -65,6 +66,19 @@
     .topBar ul li {
       font-size: 14px;
       display: inline-block; }
-  .topBar .new {
-    background-color: lightgreen;
-    color: white; }
+
+.Main {
+  margin-top: 20px; }
+
+.profileMenu {
+  margin-left: 0;
+  padding: 0; }
+
+.profileContent {
+  padding: 0;
+  margin-left: 80px; }
+
+.profileImg img {
+  height: 230px;
+  width: 230px;
+  border-radius: 5px; }
