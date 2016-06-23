@@ -2,27 +2,45 @@
 <head>
 <title>JK Github</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <div class="row Header">
-	<img src="images/mark-github.svg">	
-	<input type="text" name="search" placeholder="Search Github">
-	<h4>Pull Request</h4>
-	<h4>Issues</h4>
-	<h4>Gist</h4>
-	<img src="images/repo.svg">
-	<img src="images/triangle-down.svg">
-	<div class="miniProfileImg"></div>
-	<img src="images/triangle-down.svg">
+	
+  <div class="container-fluid">
+	<div class="col-lg-1 Logo">
+		<img src="images/mark-github.svg">
+	</div>	
+	
+	<div class="col-lg-5 Search">
+		<input type="text" name="search" placeholder="Search Github">
+	</div>
+	
+	<div class="col-lg-4 Links">
+		<ul class="nav-links">
+		<li><h4>Pull Request</h4></li>
+		<li><h4>Issues</h4></li>
+		<li><h4>Gist</h4></li>
+		</ul>
+	</div>
+
+	<div class="col-lg-1 newRepo">
+		<img src="images/plus.svg">
+		<img src="images/triangle-down.svg">
+	</div>
+
+	<div class="col-lg-1 miniProfile">
+		<img class="UPI" src="images/Jared_profile3.jpg">
+		<img src="images/triangle-down.svg">
+	</div>
+  </div>
 
 </div>
 
 <div class="row Main">
 
-	<div class="col-md-3 col-offset-md-2 profileMenu">
+	<div class="col-md-3 profileMenu">
 
 		<div class="ProfileImg"> </div>
 
@@ -34,6 +52,33 @@
 
 	<div class="col-md-7 profileContent">
 
+	<ul class="nav nav-tabs" id="myTab">
+        <li><a data-toggle="tab" href="#sectionA">
+        <img src="images/repo.svg">Repositories</a></li>
+
+        <li><a data-toggle="tab" href="#sectionB">
+        <img src="images/rss.svg"> Public activity</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="sectionA" class="tab-pane fade in active"> 
+        	<div class="topBar">
+        		<input type="text" name="repoSearch" placeholder="Find a Repository...">
+        		<button type="search">Search</button>
+        		<ul>
+        			<li>All</li>
+        			<li>Public</li>
+        			<li>Private</li>
+        			<li>Sources</li>
+        			<li>Forks</li>
+        			<li>Mirrors</li>
+        		</ul>
+        		<button class="btn btn-success"><img src="images/repo.svg">New</button>
+        	</div>
+
+        </div>
+        <div id="sectionB" class="tab-pane fade"> Test2 </div>
+
 	</div>
 
 </div>
@@ -42,6 +87,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
  crossorigin="anonymous"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="lodash.js"></script>
 <script src="js/github.js"></script>
 <script src="js/main.js"></script>

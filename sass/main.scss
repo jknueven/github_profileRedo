@@ -1,0 +1,100 @@
+$primaryColor: #F5F5F5;
+
+.Header {
+	height:48px;
+	background-color:$primaryColor;
+	border-bottom:1px solid darken($primaryColor,10);
+}
+
+.container-fluid {
+		margin-left:95px;
+		width:1000px;
+		padding-top: 5px;
+		padding-bottom:5px;
+}
+
+.Logo {
+	margin-top:5px;
+	margin-right:-10px;
+	img{
+		height:28px;
+		float:right;
+	}
+}
+
+.Search {
+	input{
+		margin-top: 7px;
+		width:100%;
+		border-radius:5px;
+		border:2px solid darken($primaryColor,20);
+		box-shadow: 0px 10px 10px 10px, $primaryColor;
+	}
+}
+
+.Links {
+	display:inline-block;
+	padding-left:2px;
+	margin-top:2px;
+
+	ul {
+		padding-left:0px;
+	}
+
+	li {
+		display:inline-block;
+	}
+	h4{
+		font-size: 13px;
+		margin-left: 10px;
+	}
+	
+}
+
+.newRepo, .miniProfile {
+	margin-top:7px;
+	margin-right:0px;
+	padding-left:0px;
+	img{
+		margin-left:10px;
+	}
+	
+}
+
+.newRepo {
+	margin-left:40px;
+	margin-right:-30px;
+}
+
+.miniProfile {
+	margin-right:0px;
+	padding-right:0;
+	.UPI {
+		height:20px;
+		width: 20px;
+	}
+}
+
+.topBar {
+	width:100%;
+	margin-top:10px;
+	border-bottom:2px solid darken($primaryColor,10);
+
+	input {
+		length:242px;
+	}
+
+	ul {
+		padding-left:10px;
+		display:inline-block;
+		li{
+			font-size: 14px;
+			display: inline-block;
+		}
+	}
+	.new {
+		background-color:lightgreen;
+		color:white;
+
+	}
+}
