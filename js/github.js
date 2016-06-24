@@ -35,7 +35,6 @@ $.ajax({
 
 		result.forEach(function(repositories)
 		{
-			console.log(repositories);
 			var repoName = repositories.name;
 			var repoDescrip = repositories.description;
 			var update = repositories.updated_at;
@@ -45,6 +44,55 @@ $.ajax({
 			var fork = repositories.forks;
 
 			$('.repos').append("<div class='repoList'><ul class='mainList'><li><h3>"+repoName+"</h3></li><li>"+repoDescrip+"</li><li>"+upTime+"</li></ul><ul class='sideList'><li>"+lang+"</li><li><img src='images/star.svg'>"+stars+"</li><li><img src='images/git-branch.svg'>"+fork+"</li></ul></div>");
+		})
+	}
+});
+
+function commitSet(commit){
+
+	var bigString= "";
+
+	commit.forEach(function(message)
+	{
+		var com = commit.message;
+		bigString += "<p>'"+com+"'</p>";
+	})
+	return bigString;
+};
+
+$.ajax({
+	url: "https://api.github.com/users/jknueven/events",
+	type: "GET",
+	success: function(activity)
+	{
+		var result = activity;
+		var time = result.created_at;
+		var updated = moment(time).fromNow();
+	
+
+		result.forEach(function(act)
+		{
+			var reference = result.payload.ref;
+			var role = reference.split("/");
+			role = role[2];
+			var sha = result.payload.commit.sha;
+			sha = sha.substring(sha.length-7, sha.length);
+			var icon = "";
+			if (act.type === "PushEvent") 
+			{
+				var commits = commitSet(act.payload.commits);
+				icon = "images/git-commit.svg";
+				$('.activitiesTab').append("<ul><li>"+updated+"</li><li>"+result.actor.login+"pushed to "+role+"at "+result.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3'><img class='imgTwo' src='images/Jared_profile3'>"+result.payload.push_id+);
+
+			}
+			else if (act.type === "CreateEvent") 
+			{
+				icon = "images/mark-github.svg";
+			}
+			else if (act.type === "MemeberEvent")
+			{
+				icon = "images/person.svg";
+			}
 		})
 	}
 });
