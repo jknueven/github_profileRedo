@@ -91,3 +91,22 @@
   height: 230px;
   width: 230px;
   border-radius: 5px; }
+
+.repoList {
+  border-bottom: 1px solid gainsboro; }
+
+.mainList {
+  list-style: none;
+  padding-left: 0; }
+  .mainList li {
+    margin-top: 10px; }
+
+.sideList {
+  list-style: none;
+  float: right;
+  margin-top: -80px; }
+  .sideList li {
+    display: inline-block;
+    margin-right: 10px; }
+  .sideList img {
+    margin-right: 3px; }

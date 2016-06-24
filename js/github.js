@@ -30,15 +30,21 @@ $.ajax({
 	type: "GET",
 	success: function(repos)
 	{
-		console.log(repos);
-		var reposit = results.objects;
 
+		var result = repos;
 
-		resposit.forEach(function(repositories)
+		result.forEach(function(repositories)
 		{
-			var repoName = reposit.name;
-			var repoDescrip = reposit.description;
-			var update = reposit.updated_at;
+			console.log(repositories);
+			var repoName = repositories.name;
+			var repoDescrip = repositories.description;
+			var update = repositories.updated_at;
+			var upTime = moment(update).fromNow();
+			var stars = repositories.stargazers_count;
+			var lang = repositories.language;
+			var fork = repositories.forks;
+
+			$('.repos').append("<div class='repoList'><ul class='mainList'><li><h3>"+repoName+"</h3></li><li>"+repoDescrip+"</li><li>"+upTime+"</li></ul><ul class='sideList'><li>"+lang+"</li><li><img src='images/star.svg'>"+stars+"</li><li><img src='images/git-branch.svg'>"+fork+"</li></ul></div>");
 		})
 	}
 });
