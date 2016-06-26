@@ -66,10 +66,7 @@ $.ajax({
 	success: function(activity)
 	{
 		var result = activity;
-		var time = result.created_at;
-		var updated = moment(time).fromNow();
 	
-
 		result.forEach(function(events)
 		{
 			if (events.type === "PushEvent") 
@@ -83,6 +80,7 @@ $.ajax({
 				var id = share.substring(share.length-7, share.length);
 				var icon = "";
 				var commits = commitSet(events.payload.commits);
+				var updated = moment(events.created_at).fromNow();
 				icon = "images/git-commit.svg";
 				$('.activitiesTab').append("<ul><li><img src='images/git-commit.svg'>"+updated+"</li><li>"+user+"pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p>");
 
@@ -93,12 +91,19 @@ $.ajax({
 				var type = events.payload.ref_type;
 				var ref = events.payload.ref;
 				var loc = events.repo.name;
+				var updated = moment(events.created_at).fromNow();
 				icon = "images/mark-github.svg";
-				$('activitiesTab').append("<div><img class='createImg' src='images/git-branch.svg'>"+user+"created"+type++ref+"at"+loc+"</div>");
+				$('.activitiesTab').append("<div><img class='createImg' src='images/git-branch.svg'><p>" +user+ " created " + type + ref +" at "+ loc + updated +"</p></div>");
 			}
 			else if (events.type === "MemeberEvent")
 			{
+				var user = events.actor.login;
+				var action = events.payload.action;
+				var member = events.payload.member.login;
+				var ref = events.payload.ref;
+				var updated = moment(events.created_at).fromNow();
 				icon = "images/person.svg";
+				$('.activitiesTab').append("<div><img class='memImg' src='"+icon+"'>" + user + action+ member+" to " + ref + updated +"</div>");
 			}
 		})
 	}

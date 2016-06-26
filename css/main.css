@@ -1,8 +1,13 @@
+.Body {
+  padding: 0px; }
+
 .Header {
   height: 48px;
   background-color: #F5F5F5;
   border-bottom: 1px solid gainsboro;
   width: 100%;
+  padding-left: 45px;
+  padding-right: 45px;
   margin-right: 0px;
   margin-left: 0px; }
 
