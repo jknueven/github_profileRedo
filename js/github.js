@@ -72,26 +72,31 @@ $.ajax({
 
 		result.forEach(function(events)
 		{
-			var user = events.actor.login;
-			var reference = events.payload.ref;
-			var role = reference.split("/");
-			role = role[2];
-			var taco = events.payload.commits[0];
-			var share = taco.sha;
-			var id = share.substring(share.length-7, share.length);
-			var icon = "";
 			if (events.type === "PushEvent") 
 			{
+				var user = events.actor.login;
+				var reference = events.payload.ref;
+				var role = reference.split("/");
+				role = role[2];
+				var taco = events.payload.commits[0];
+				var share = taco.sha;
+				var id = share.substring(share.length-7, share.length);
+				var icon = "";
 				var commits = commitSet(events.payload.commits);
 				icon = "images/git-commit.svg";
 				$('.activitiesTab').append("<ul><li><img src='images/git-commit.svg'>"+updated+"</li><li>"+user+"pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p>");
 
 			}
-			else if (act.type === "CreateEvent") 
+			else if (events.type === "CreateEvent") 
 			{
+				var user = events.actor.login;
+				var type = events.payload.ref_type;
+				var ref = events.payload.ref;
+				var loc = events.repo.name;
 				icon = "images/mark-github.svg";
+				$('activitiesTab').append("<div><img class='createImg' src='images/git-branch.svg'>"+user+"created"+type++ref+"at"+loc+"</div>");
 			}
-			else if (act.type === "MemeberEvent")
+			else if (events.type === "MemeberEvent")
 			{
 				icon = "images/person.svg";
 			}
