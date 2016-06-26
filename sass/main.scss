@@ -108,21 +108,19 @@ $primaryColor: #F5F5F5;
 
 	ul {
 		padding-left:10px;
-		margin-left: 20px;
+		margin-left: 35px;
 		display:inline-block;
 		li{
 			font-size: 14px;
 			display: inline-block;
 		}
 	}
-	input {
-		width:100%;
-	}
+	
 	.btn-default {
 		margin-left: 0px;
 	}
 	.btn-success {
-		margin-left: 70px;
+		margin-left: 44px;
 	}
 }
 
@@ -130,7 +128,7 @@ $primaryColor: #F5F5F5;
 	padding-left:0;
 	.form-control {
 		margin-left: 0;
-		length:242px;
+		length:auto;
 		
 	}
 }
@@ -187,7 +185,9 @@ $primaryColor: #F5F5F5;
 	border-bottom:1px solid darken($primaryColor,10);
 	img {
 		float:left;
-		margin-right: 5px;
+		opacity: 0.5;
+		margin-right: 10px;
+		margin-top: 2px;
 	}
 }
 
@@ -256,8 +256,8 @@ $primaryColor: #F5F5F5;
 		background: linear-gradient(white,darken($primaryColor,10));
 	}
 
-	.btn-success {
-		margin-left: 10px;
+	.buttonNR {
+		margin-left: 44px;
 	}
 }
 
@@ -296,14 +296,43 @@ $primaryColor: #F5F5F5;
 }
 
 .activitiesTab {
-	
+	//margin-bottom:10px;
+
 	ul{
-		border-bottom:1px darken($primaryColor,10);
+		border-bottom:1px solid darken($primaryColor,10);
+		margin-top: -30px;
+		margin-bottom: 10px;
 	}
 	li{
 		list-style:none;
 
 	}
+}
+
+.pushImg {
+	height:32px;
+	width:28px;
+	opacity:0.3;
+}
+
+.event {
+	margin-top:10px;
+
+	ul {
+		padding-bottom:10px;
+	}
+
+	p{
+		margin-top: -27px;
+		margin-left: 140px;
+		width:auto;
+		opacity: 0.5;
+	}
+	
+}
+
+.update {
+	opacity:0.3;
 }
 
 .imgOne, .imgTwo {
@@ -320,4 +349,21 @@ $primaryColor: #F5F5F5;
 	width:16px;
 	margin-left:5px;
 	margin-top:-8px;
+}
+
+.eventCreate, .eventMember {
+	border-bottom:1px solid darken($primaryColor,10);
+
+	img {
+		opacity: 0.5;
+	}
+
+	p {
+		margin-top: -20px;
+		padding-left:20px;
+	}
+
+	h6 {
+		opacity: 0.5;
+	}
 }

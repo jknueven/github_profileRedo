@@ -84,7 +84,7 @@ $.ajax({
 				var commits = commitSet(events.payload.commits);
 				var updated = moment(events.created_at).fromNow();
 				//icon = "images/git-commit.svg";
-				$('.activitiesTab').append("<ul><li><img src='images/git-commit.svg'>"+updated+"</li><li>"+user+"pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p>");
+				$('.activitiesTab').append("<div class='event'><img class='pushImg' src='images/git-commit.svg'><ul><li class='update'>" +updated+"</li><li>"+user+" pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p></li><div>");
 
 			}
 			else if (events.type === "CreateEvent") 
@@ -93,13 +93,13 @@ $.ajax({
 				var type = events.payload.ref_type;
 				var reference = events.payload.ref;
 				var loc = events.repo.name;
-				//var updated = moment(events.created_at).fromNow();
+				var updated = moment(events.created_at).fromNow();
 				//icon = "images/mark-github.svg";
 				 if(reference === null)
                 {
                     ref = "";
                 }
-				$('.activitiesTab').append("<div><img class='createImg' src='images/git-branch.svg'><p>" +user+ " created " + type + reference +" at "+ loc + updated +"</p></div>");
+				$('.activitiesTab').append("<div class='eventCreate'><img class='createImg' src='images/git-branch.svg'><p>" +user+ " created " + type + reference +" at "+ loc + updated +"</p></div>");
 			}
 			else if (events.type === "MemeberEvent")
 			{
@@ -107,9 +107,9 @@ $.ajax({
 				var action = events.payload.action;
 				var member = events.payload.member.login;
 				var reference = events.payload.ref;
-				//var updated = moment(events.created_at).fromNow();
+				var updated = moment(events.created_at).fromNow();
 				//icon = "images/person.svg";
-				$('.activitiesTab').append("<div><img class='memImg' src='"+icon+"'><p>" + user + action+ member+" to " + reference + updated +"</p></div>");
+				$('.activitiesTab').append("<div class='eventMember'><img class='memImg' src='"+icon+"'><p>" + user + action+ member+" to " + reference + updated +"</p></div>");
 			}
 		});
 	}
