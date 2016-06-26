@@ -158,3 +158,30 @@ $primaryColor: #F5F5F5;
 		margin-right: 3px;
 	}
 }
+
+.activitiesTab {
+	
+	ul{
+		border-bottom:1px darken($primaryColor,10);
+	}
+	li{
+		list-style:none;
+
+	}
+}
+
+.imgOne, .imgTwo {
+	border-radius:5px;
+}
+
+.imgOne {
+	height:30px;
+	width:30px;
+}
+
+.imgTwo {
+	height:16px;
+	width:16px;
+	margin-left:5px;
+	margin-top:-8px;
+}

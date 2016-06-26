@@ -110,3 +110,22 @@
     margin-right: 10px; }
   .sideList img {
     margin-right: 3px; }
+
+.activitiesTab ul {
+  border-bottom: 1px gainsboro; }
+
+.activitiesTab li {
+  list-style: none; }
+
+.imgOne, .imgTwo {
+  border-radius: 5px; }
+
+.imgOne {
+  height: 30px;
+  width: 30px; }
+
+.imgTwo {
+  height: 16px;
+  width: 16px;
+  margin-left: 5px;
+  margin-top: -8px; }

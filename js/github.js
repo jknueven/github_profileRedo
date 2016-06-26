@@ -70,19 +70,21 @@ $.ajax({
 		var updated = moment(time).fromNow();
 	
 
-		result.forEach(function(act)
+		result.forEach(function(events)
 		{
-			var reference = result.payload.ref;
+			var user = events.actor.login;
+			var reference = events.payload.ref;
 			var role = reference.split("/");
 			role = role[2];
-			var sha = result.payload.commit.sha;
-			sha = sha.substring(sha.length-7, sha.length);
+			var taco = events.payload.commits[0];
+			var share = taco.sha;
+			var id = share.substring(share.length-7, share.length);
 			var icon = "";
-			if (act.type === "PushEvent") 
+			if (events.type === "PushEvent") 
 			{
-				var commits = commitSet(act.payload.commits);
+				var commits = commitSet(events.payload.commits);
 				icon = "images/git-commit.svg";
-				$('.activitiesTab').append("<ul><li>"+updated+"</li><li>"+result.actor.login+"pushed to "+role+"at "+result.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3'><img class='imgTwo' src='images/Jared_profile3'>"+result.payload.push_id+);
+				$('.activitiesTab').append("<ul><li><img src='images/git-commit.svg'>"+updated+"</li><li>"+user+"pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p>");
 
 			}
 			else if (act.type === "CreateEvent") 
