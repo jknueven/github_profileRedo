@@ -13,26 +13,26 @@
 		<img src="images/mark-github.svg">
 	</div>	
 	
-	<div class="col-lg-5 Search">
-		<input type="text" name="search" placeholder="Search Github">
+	<div class="col-lg-4 Search">
+		<input class="form-control" type="text" name="search" placeholder="Search Github">
 	</div>
 	
 	<div class="col-lg-4 Links">
 		<ul class="nav-links">
-		<li><h4>Pull Request</h4></li>
-		<li><h4>Issues</h4></li>
-		<li><h4>Gist</h4></li>
+		<li><a href="https://github.com/pulls"><h4>Pull Request</h4></a></li>
+		<li><a href="https://github.com/issues"><h4>Issues</h4></a></li>
+		<li><a href="https://gist.github.com/"><h4>Gist</h4></a></li>
 		</ul>
 	</div>
 
 	<div class="col-lg-1 newRepo">
 		<img src="images/plus.svg">
-		<img src="images/triangle-down.svg">
+		<img class="triangle" src="images/triangle-down.svg">
 	</div>
 
 	<div class="col-lg-1 miniProfile">
 		<img class="UPI" src="images/Jared_profile3.jpg">
-		<img src="images/triangle-down.svg">
+		<img class="triangle" src="images/triangle-down.svg">
 	</div>
   </div>
 
@@ -55,9 +55,9 @@
 
 	</div>
 
-	<div class="col-md-8 profileContent">
+	<div class="col-md-7 profileContent">
 
-	<button class="editProfile"><img src="images/pencil.svg">Edit Profile</button>
+	<a class="btn btn-sm editProfile" href="https://github.com/settings/profile"><img src="images/pencil.svg">Edit Profile</a>
 
 	<ul class="nav nav-tabs" id="myTab">
         <li><a data-toggle="tab" href="#sectionA">
@@ -70,8 +70,10 @@
     <div class="tab-content">
         <div id="sectionA" class="tab-pane fade in active"> 
         	<div class="topBar">
-        		<input type="text" name="repoSearch" placeholder="Find a Repository...">
-        		<button type="search">Search</button>
+        		<div class="col-md-3 searchBar">
+        			<input class="form-control" type="text" name="repoSearch" placeholder="Find a Repository...">
+        		</div>
+        		<button class="btn btn-default" type="search">Search</button>
         		<ul>
         			<li>All</li>
         			<li>Public</li>

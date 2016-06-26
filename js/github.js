@@ -15,12 +15,12 @@ $.ajax({
 			var create = users.created_at;
 			var time = moment(create).format('MMM,DD YYYY');
 
-			$('.profileImg').append("<img src='images/Jared_profile3.jpg'>");
+			$('.profileImg').append("<a href='https://github.com/settings/profile'><img src='images/Jared_profile3.jpg'></a>");
 			$('.name').append("<h2>"+name+"</h2>");
 			$('.username').append("<h3>"+username+"</h3>");
 			$('.bio').append("<p>"+bio+"</p>");
 			$('.started').append("<img src='images/clock.svg'><p>Joined on "+time+"</p>");
-			$('.stats').append("<a class='vcard-stat'><strong class='vcard-stat-count d-block'>"+followers+"</strong><span>Followers</span></a><a class='vcard-stat'><strong class='vcard-stat-count d-block'>0</strong><span>Starred</span></a><a class='vcard-stat'><strong class='vcard-stat-count d-block'>"+following+"</strong><span>Following</span></a>");
+			$('.stats').append("<div class='col-md-4 follow'><ul><li><h5><a href='https://github.com/jknueven/followers'>"+followers+"</a></h5></li><li><p>Followers</p></li></ul></div><div class='col-md-4 stars'><ul><li><h5><a href='https://github.com/stars'>0</a></h5></li><li><p>Starred</p></li></ul></div><div class='col-md-4 following'><ul><li><h5><a href='https://github.com/jknueven/following'>"+following+"</a></h5></li><li><p>Following</p></li></ul></div>");
 
 		}
 	});
@@ -42,9 +42,11 @@ $.ajax({
 			var stars = repositories.stargazers_count;
 			var lang = repositories.language;
 			var fork = repositories.forks;
+			var href = repositories.html_url;
 
-			$('.repos').append("<div class='repoList'><ul class='mainList'><li><h3>"+repoName+"</h3></li><li>"+repoDescrip+"</li><li>"+upTime+"</li></ul><ul class='sideList'><li>"+lang+"</li><li><img src='images/star.svg'>"+stars+"</li><li><img src='images/git-branch.svg'>"+fork+"</li></ul></div>");
-		})
+
+			$('.repos').append("<div class='repoList'><ul class='mainList'><li><h3><a href='"+href+"'>"+repoName+"</a></h3></li><li>"+repoDescrip+"</li><li>"+upTime+"</li></ul><ul class='sideList'><li>"+lang+"</li><li><a href='https://github.com/jknueven/'"+repoName+"'/stargazers'><img src='images/star.svg'>"+stars+"</li><li><a href='https://github.com/jknueven/'"+repoName+"'/network'><img src='images/git-branch.svg'>"+fork+"</a></li></ul></div>");
+		});
 	}
 });
 
@@ -56,9 +58,9 @@ function commitSet(commit){
 	{
 		var com = commit.message;
 		bigString += "<p>'"+com+"'</p>";
-	})
+	});
 	return bigString;
-};
+}
 
 $.ajax({
 	url: "https://api.github.com/users/jknueven/events",
@@ -81,31 +83,35 @@ $.ajax({
 				var icon = "";
 				var commits = commitSet(events.payload.commits);
 				var updated = moment(events.created_at).fromNow();
-				icon = "images/git-commit.svg";
+				//icon = "images/git-commit.svg";
 				$('.activitiesTab').append("<ul><li><img src='images/git-commit.svg'>"+updated+"</li><li>"+user+"pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p>");
 
 			}
 			else if (events.type === "CreateEvent") 
 			{
-				var user = events.actor.login;
+				//var user = events.actor.login;
 				var type = events.payload.ref_type;
-				var ref = events.payload.ref;
+				var reference = events.payload.ref;
 				var loc = events.repo.name;
-				var updated = moment(events.created_at).fromNow();
-				icon = "images/mark-github.svg";
-				$('.activitiesTab').append("<div><img class='createImg' src='images/git-branch.svg'><p>" +user+ " created " + type + ref +" at "+ loc + updated +"</p></div>");
+				//var updated = moment(events.created_at).fromNow();
+				//icon = "images/mark-github.svg";
+				 if(reference === null)
+                {
+                    ref = "";
+                }
+				$('.activitiesTab').append("<div><img class='createImg' src='images/git-branch.svg'><p>" +user+ " created " + type + reference +" at "+ loc + updated +"</p></div>");
 			}
 			else if (events.type === "MemeberEvent")
 			{
-				var user = events.actor.login;
+				//var user = events.actor.login;
 				var action = events.payload.action;
 				var member = events.payload.member.login;
-				var ref = events.payload.ref;
-				var updated = moment(events.created_at).fromNow();
-				icon = "images/person.svg";
-				$('.activitiesTab').append("<div><img class='memImg' src='"+icon+"'>" + user + action+ member+" to " + ref + updated +"</div>");
+				var reference = events.payload.ref;
+				//var updated = moment(events.created_at).fromNow();
+				//icon = "images/person.svg";
+				$('.activitiesTab').append("<div><img class='memImg' src='"+icon+"'><p>" + user + action+ member+" to " + reference + updated +"</p></div>");
 			}
-		})
+		});
 	}
 });
 
