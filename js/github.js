@@ -80,16 +80,17 @@ $.ajax({
 				var taco = events.payload.commits[0];
 				var share = taco.sha;
 				var id = share.substring(share.length-7, share.length);
+				//console.log(id);
 				var icon = "";
 				var commits = commitSet(events.payload.commits);
 				var updated = moment(events.created_at).fromNow();
 				//icon = "images/git-commit.svg";
-				$('.activitiesTab').append("<div class='event'><img class='pushImg' src='images/git-commit.svg'><ul><li class='update'>" +updated+"</li><li>"+user+" pushed to "+role+" at "+events.repo.name+"</li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'>"+events.payload.push_id+"<p>"+taco.message+"</p></li><div>");
+				$('.activitiesTab').append("<div class='event'><img class='pushImg' src='images/git-commit.svg'><ul><li class='update'>" +updated+"</li><li><a href='https://github.com/jknueven'>"+user+"</a> pushed to <a href='https://github.com/"+events.repo.name+"/tree/master'>"+role+"</a> at <a href='https://github.com/"+events.repo.name+"'>"+events.repo.name+"</a></li><li><img class='imgOne' src='images/Jared_profile3.jpg'><img class='imgTwo' src='images/Jared_profile3.jpg'><a href='https://github.com/jknueven/"+events.repo.name+"/commit/"+share+"'>"+id+"</a><p>"+taco.message+"</p></li><div>");
 
 			}
 			else if (events.type === "CreateEvent") 
 			{
-				//var user = events.actor.login;
+				var user = events.actor.login;
 				var type = events.payload.ref_type;
 				var reference = events.payload.ref;
 				var loc = events.repo.name;
@@ -99,7 +100,7 @@ $.ajax({
                 {
                     ref = "";
                 }
-				$('.activitiesTab').append("<div class='eventCreate'><img class='createImg' src='images/git-branch.svg'><p>" +user+ " created " + type + reference +" at "+ loc + updated +"</p></div>");
+				$('.activitiesTab').append("<div class='eventCreate'><img class='createImg' src='images/git-branch.svg'><a href='https://github.com/jknueven'> "+user+" </a> created <a href='https://github.com/jknueven/"+events.repo.name+"/tree/"+type+"'> " + type +"</a> "+ reference +" at <a href='https://github.com/jknueven/"+events.repo.name+"'>"+ loc +"</a></p><div class='update2'>"+updated +"</div></div>");
 			}
 			else if (events.type === "MemeberEvent")
 			{
@@ -109,7 +110,11 @@ $.ajax({
 				var reference = events.payload.ref;
 				var updated = moment(events.created_at).fromNow();
 				//icon = "images/person.svg";
-				$('.activitiesTab').append("<div class='eventMember'><img class='memImg' src='"+icon+"'><p>" + user + action+ member+" to " + reference + updated +"</p></div>");
+				if(ref === null)
+                {
+                    ref = "";
+                }
+				$('.activitiesTab').append("<div class='eventMember'><img class='memImg' src='"+icon+"'><p> " + user + action+ member+" to <a href='https://github.com/jknueven/"+events.repo.name+"'>"+reference+"</a></p><div class='update2'>"+ updated +"</div></div>");
 			}
 		});
 	}
