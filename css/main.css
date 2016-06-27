@@ -126,7 +126,7 @@
   .username h3 {
     margin-top: 0px;
     font-size: 21px;
-    color: grey; }
+    opacity: 0.5; }
 
 .bio {
   border-bottom: 1px solid gainsboro; }
@@ -161,6 +161,8 @@
     .stats .follow li p, .stats .stars li p, .stats .following li p {
       font-size: 11px;
       margin-top: 0px; }
+    .stats .follow li a, .stats .stars li a, .stats .following li a {
+      text-decoration: none; }
 
 .follow ul, .following ul {
   margin-top: 1px; }

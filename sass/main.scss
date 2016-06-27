@@ -174,7 +174,7 @@ $primaryColor: #F5F5F5;
 	h3 {
 		margin-top: 0px;
 		font-size:21px;
-		color:grey;
+		opacity:0.5;
 	}
 }
 
@@ -218,6 +218,10 @@ $primaryColor: #F5F5F5;
 			p{
 				font-size:11px;
 				margin-top: 0px;
+			}
+			a {
+				text-decoration: none;
+
 			}
 		}
 	}
